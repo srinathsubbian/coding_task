@@ -77,6 +77,19 @@ class EventsListViewState extends State<EventsListView>
 
   @override
   Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        color: Styles.scaffoldBackground,
+      ),
+      child: SafeArea(
+        child: Column(
+          children: [_buildSearchBox(), buildListViewWidget()],
+        ),
+      ),
+    );
+  }
+
+  Widget buildListViewWidget() {
     return StreamBuilder<EventsModel>(
       stream: eventsListViewModel.eventsList,
       builder: (context, snapshot) {
@@ -87,26 +100,7 @@ class EventsListViewState extends State<EventsListView>
         if (snapshot.connectionState == ConnectionState.active) {
           var eventsList = snapshot.data;
           if (eventsList != null && (eventsList.events.isNotEmpty)) {
-            return buildListViewWidget(eventsList);
-          } else {
-            return buildListViewNoDataWidget();
-          }
-        }
-        return const ShimmerWidget();
-      },
-    );
-  }
-
-  Widget buildListViewWidget(EventsModel eventsList) {
-    return DecoratedBox(
-      decoration: const BoxDecoration(
-        color: Styles.scaffoldBackground,
-      ),
-      child: SafeArea(
-        child: Column(
-          children: [
-            _buildSearchBox(),
-            Expanded(
+            return Expanded(
               child: ListView.builder(
                 itemBuilder: (context, index) => EventListItem(
                   event: eventsList.events[index],
@@ -125,10 +119,13 @@ class EventsListViewState extends State<EventsListView>
                 ),
                 itemCount: eventsList.events.length,
               ),
-            )
-          ],
-        ),
-      ),
+            );
+          } else {
+            return buildListViewNoDataWidget();
+          }
+        }
+        return const Expanded(child: ShimmerWidget());
+      },
     );
   }
 
