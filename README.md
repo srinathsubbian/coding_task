@@ -1,7 +1,7 @@
 # Coding Task
 Sample of flutter application with Clean Architecture and MVVM.
 
-# In this article, we show you how MVVM with Flutter could look like.
+#  Clean Architecture with ViewModel .
 We’ll create a functional reactive ViewModel using Darts Stream API.
 
 # MVVM
