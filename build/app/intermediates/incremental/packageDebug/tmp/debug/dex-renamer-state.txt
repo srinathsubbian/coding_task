@@ -1,0 +1,4 @@
+#Fri May 27 10:45:01 IST 2022
+base.0=/Users/ssubbian/HNBProject/MasterJuly20/mobile-dependencies/akamai_plugin/example/coding_task/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
