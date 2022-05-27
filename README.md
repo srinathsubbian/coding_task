@@ -1,4 +1,4 @@
-# coding_task
+# Coding Task
 Sample of flutter application with Clean Architecture and MVVM.
 
 # In this article, we show you how MVVM with Flutter could look like.
